@@ -5,12 +5,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
 } from "@remix-run/react";
 
 import rootStyles from "~/styles/root.css";
-import Sidebar from "./components/nav/sidebar";
-import PageTopBar from "./components/page-topbar";
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
@@ -32,8 +29,6 @@ export const meta = () => ({
 });
 
 export default function App() {
-  const { pathname } = useLocation();
-
   return (
     <html lang="en">
       <head>
@@ -41,12 +36,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {pathname !== "/" ? (
-          <div className="page-root-elements">
-            <Sidebar />
-            <PageTopBar />
-          </div>
-        ) : null}
         <Outlet />
         <ScrollRestoration />
         <Scripts />
