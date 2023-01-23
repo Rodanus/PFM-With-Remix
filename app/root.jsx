@@ -9,6 +9,7 @@ import {
 } from "@remix-run/react";
 
 import rootStyles from "~/styles/root.css";
+import Sidebar from "./components/nav/sidebar";
 import PageTopBar from "./components/page-topbar";
 
 /**
@@ -40,7 +41,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {pathname !== "/" ? <PageTopBar /> : null}
+        {pathname !== "/" ? (
+          <div className="page-root-elements">
+            <Sidebar />
+            <PageTopBar />
+          </div>
+        ) : null}
         <Outlet />
         <ScrollRestoration />
         <Scripts />
