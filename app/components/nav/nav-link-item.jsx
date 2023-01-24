@@ -9,6 +9,7 @@ export default function NavLinkItem({ navLink }) {
         className={({ isActive }) =>
           isActive ? "nav-link nav-link-active" : "nav-link"
         }
+        prefetch="intent"
       >
         {navLink.name}
       </NavLink>
