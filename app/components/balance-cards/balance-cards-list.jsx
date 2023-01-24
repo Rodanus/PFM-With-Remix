@@ -3,7 +3,7 @@ import BalanceCard from "./balance-card";
 
 export default function BalanceCardsList({ accountBalance }) {
   return (
-    <ul>
+    <ul className="balance-cards-list">
       {accountBalance.map((balance, index) => (
         <BalanceCard key={balance.title + `${index}`} balance={balance} />
       ))}

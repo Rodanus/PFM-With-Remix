@@ -1,3 +1,65 @@
+@mixin card($bg-color, $title-class-to-style, $text-color, $link-class, $link-bg-color) {
+    background: $bg-color;
+
+    [class~=#{$title-class-to-style}] {
+        color: $text-color;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    [class~=#{$link-class}] {
+        font-size: 12px;
+        background: $link-bg-color;
+        padding: 2px 12px; 
+        border-radius: 12px;
+        text-decoration: none;
+    }
+}
+
 .overview-main-content {
     padding: 24px;
+
+    .balance-cards-list {
+        list-style-type: none;
+        display: flex;
+
+        .balance-card {
+            width: 280px;
+            height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            margin-right: 2rem;
+            padding: 20px 22px 18px 29px;
+            border-radius: 7px;
+
+            .balance-card-container {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .balance-cards-details-link {
+                color: #fff;
+            }
+
+            .balance-card-amount {
+                font-size: 30px;
+                font-weight: 500;
+                margin-top: auto;
+            }
+        }
+
+        .income {
+            @include card(linear-gradient(90deg, #7DD3FC 0%, #BAE6FD 102.82%), income-title, #1A74C7, income-link, rgba(56, 189, 248, 0.75));           
+        }
+
+        .balance {
+            @include card(linear-gradient(90deg, #D4D4D8 0%, #E4E4E7 102.82%), balance-title, #71717A, balance-link, rgba(113, 113, 122, 0.75));           
+        }
+
+        .expense {
+            @include card(linear-gradient(90deg, #FDA4AF 0%, #FECDD3 102.82%), expense-title, #EF2A4C, expense-link, rgba(251, 113, 133, 0.75));           
+        }
+    }
 }

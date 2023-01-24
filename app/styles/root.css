@@ -38,11 +38,83 @@ body {
   flex-wrap: wrap;
 }
 .page-layout .layout-main-content-container {
-  width: 74%;
+  width: 84%;
 }
 
 .overview-main-content {
   padding: 24px;
+}
+.overview-main-content .balance-cards-list {
+  list-style-type: none;
+  display: flex;
+}
+.overview-main-content .balance-cards-list .balance-card {
+  width: 280px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  margin-right: 2rem;
+  padding: 20px 22px 18px 29px;
+  border-radius: 7px;
+}
+.overview-main-content .balance-cards-list .balance-card .balance-card-container {
+  display: flex;
+  justify-content: space-between;
+}
+.overview-main-content .balance-cards-list .balance-card .balance-cards-details-link {
+  color: #fff;
+}
+.overview-main-content .balance-cards-list .balance-card .balance-card-amount {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: auto;
+}
+.overview-main-content .balance-cards-list .income {
+  background: linear-gradient(90deg, #7DD3FC 0%, #BAE6FD 102.82%);
+}
+.overview-main-content .balance-cards-list .income [class~=income-title] {
+  color: #1A74C7;
+  font-size: 18px;
+  font-weight: 600;
+}
+.overview-main-content .balance-cards-list .income [class~=income-link] {
+  font-size: 12px;
+  background: rgba(56, 189, 248, 0.75);
+  padding: 2px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.overview-main-content .balance-cards-list .balance {
+  background: linear-gradient(90deg, #D4D4D8 0%, #E4E4E7 102.82%);
+}
+.overview-main-content .balance-cards-list .balance [class~=balance-title] {
+  color: #71717A;
+  font-size: 18px;
+  font-weight: 600;
+}
+.overview-main-content .balance-cards-list .balance [class~=balance-link] {
+  font-size: 12px;
+  background: rgba(113, 113, 122, 0.75);
+  padding: 2px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.overview-main-content .balance-cards-list .expense {
+  background: linear-gradient(90deg, #FDA4AF 0%, #FECDD3 102.82%);
+}
+.overview-main-content .balance-cards-list .expense [class~=expense-title] {
+  color: #EF2A4C;
+  font-size: 18px;
+  font-weight: 600;
+}
+.overview-main-content .balance-cards-list .expense [class~=expense-link] {
+  font-size: 12px;
+  background: rgba(251, 113, 133, 0.75);
+  padding: 2px 12px;
+  border-radius: 12px;
+  text-decoration: none;
 }
 
 .sidebar-nav {
