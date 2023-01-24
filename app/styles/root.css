@@ -37,6 +37,9 @@ body {
   text-decoration: none;
   text-transform: capitalize;
 }
+.sidebar-nav .nav-links-container .nav-link-active {
+  color: #fff;
+}
 
 .page-header {
   font-size: 22px;

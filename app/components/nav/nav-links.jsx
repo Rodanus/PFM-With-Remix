@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-import NavLink from "./nav-link";
+import NavLinkItem from "./nav-link-item";
 
 export default function NavLinks({ navLinks }) {
   return (
     <ul className="nav-links-container">
-      {/* TODO: Fix the eslint error. */}
       {navLinks.length > 0
-        ? navLinks.map((link) => <NavLink key={link.url} navLink={link} />)
+        ? navLinks.map((link) => <NavLinkItem key={link.url} navLink={link} />)
         : "No links here..."}
     </ul>
   );
