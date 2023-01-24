@@ -13,13 +13,46 @@ body {
   text-transform: capitalize;
 }
 
+.sidebar-nav {
+  display: inline-block;
+  padding: 25px 10px 0 15px;
+  width: 16%;
+  height: 100vh;
+  background: linear-gradient(180deg, #30475E 0%, #222831 100%);
+}
+.sidebar-nav .logo {
+  width: 232px;
+  height: 40px;
+}
+.sidebar-nav .nav-links-container {
+  padding-left: 9px;
+  list-style: none;
+}
+.sidebar-nav .nav-links-container .nav-link-item {
+  margin: 30px 0;
+}
+.sidebar-nav .nav-links-container .nav-link {
+  font-size: 22px;
+  color: #D4D4D8;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
 .page-header {
   font-size: 22px;
-  width: 85%;
+  height: max-content;
   padding: 26px;
   margin-left: auto;
   background: #F7F4F3;
   box-shadow: 0px 1px 8px rgba(34, 40, 49, 0.05);
+}
+
+.page-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-layout .layout-main-content-container {
+  width: 74%;
 }
 
 .index-page {
