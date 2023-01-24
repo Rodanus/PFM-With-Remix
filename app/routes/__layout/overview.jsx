@@ -1,3 +1,10 @@
+import BalanceCards from "~/components/balance-cards/balance-cards";
+import { accountBalance } from "~/data/account-balance";
+
 export default function Overview() {
-  return <div>overview page</div>;
+  return (
+    <main className="overview-main-content">
+      <BalanceCards accountBalance={accountBalance} />
+    </main>
+  );
 }

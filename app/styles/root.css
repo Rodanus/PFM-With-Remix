@@ -23,6 +23,28 @@ body {
   font-weight: 600;
 }
 
+.index-page {
+  font-family: system-ui, sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.page-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+.page-layout .layout-main-content-container {
+  width: 74%;
+}
+
+.overview-main-content {
+  padding: 24px;
+}
+
 .sidebar-nav {
   display: inline-block;
   padding: 25px 10px 0 15px;
@@ -60,22 +82,4 @@ body {
 .page-header .page-header-title {
   font-size: 22px;
   color: #374151;
-}
-
-.page-layout {
-  display: flex;
-  flex-wrap: wrap;
-}
-.page-layout .layout-main-content-container {
-  width: 74%;
-}
-
-.index-page {
-  font-family: system-ui, sans-serif;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
 }
