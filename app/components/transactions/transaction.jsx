@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import PropTypes from "prop-types";
 
 import TransactionAmount from "./transaction-amount";
@@ -6,18 +7,16 @@ import TransactionIcon from "./transaction-icon";
 
 export default function Transaction({ transaction }) {
   return (
-    <div>
-      <span>
+    <Link to="#" className="transaction-container flex-space-between">
+      <span className="transaction-category-note-container flex-space-between items-center">
         <TransactionIcon transactionCategory={transaction.category} />
+        {transaction.note}
       </span>
-      <span>{transaction.note}</span>
-      <span>
+      <span className="flex-space-between items-center">
         <TransactionDate transactionDate={transaction.createdAt} />
-      </span>
-      <span>
         <TransactionAmount transactionAmount={transaction.amount} />
       </span>
-    </div>
+    </Link>
   );
 }
 

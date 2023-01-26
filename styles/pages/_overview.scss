@@ -1,3 +1,4 @@
+// TODO: Move balance cards style to separate component scss file. 
 @mixin card($bg-color, $title-class-to-style, $text-color, $link-class, $link-bg-color) {
     background: $bg-color;
 
@@ -17,11 +18,13 @@
 }
 
 .overview-main-content {
+    max-width: 928px;
     padding: 24px;
 
     .balance-cards-list {
         list-style-type: none;
         display: flex;
+        margin-bottom: 90px;
 
         .balance-card {
             width: 280px;

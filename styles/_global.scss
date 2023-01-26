@@ -21,3 +21,12 @@ body {
 .font-600 {
   font-weight: 600;
 }
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}

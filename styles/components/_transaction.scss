@@ -1,0 +1,33 @@
+.transaction-container {
+    text-decoration: none;
+    background: #F8FAFC;
+    padding: 15px;
+    margin-bottom: 18px;
+    border-radius: 7px;
+    color: #334155;
+
+    .transaction-category-note-container {
+
+        .transaction-icon-container {
+            margin-right: 14px;
+        }
+    }
+
+    .transaction-date {
+        margin-right: 22px
+    }
+
+    .transaction-amount {
+        background: rgba(14, 165, 233, 0.15);
+        font-size: 18px;
+        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 6px;
+
+    }
+    
+    .transaction-amount-income {
+        color: #0EA5E9;
+    }
+    
+}
