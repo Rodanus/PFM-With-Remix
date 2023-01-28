@@ -6,8 +6,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { createContext, useEffect } from "react";
 
 import rootStyles from "~/styles/root.css";
+import useLocalStorage from "./hooks/useLocalStorage";
+import { accountData } from "./mocks/transactions";
+
+export const Account = createContext([accountData, () => {}]);
 
 /**
  * @returns {import("@remix-run/node").LinkDescriptor[]}
@@ -29,6 +34,15 @@ export const meta = () => ({
 });
 
 export default function App() {
+  const [storedData, setStoredData] = useLocalStorage(
+    "accountStoredData",
+    accountData
+  );
+
+  useEffect(() => {
+    setStoredData(accountData);
+  }, [setStoredData]);
+
   return (
     <html lang="en">
       <head>
@@ -36,7 +50,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Account.Provider value={[storedData, setStoredData]}>
+          <Outlet />
+        </Account.Provider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

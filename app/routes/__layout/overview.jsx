@@ -1,10 +1,12 @@
+import { useContext } from "react";
 import BalanceCards from "~/components/balance-cards/balance-cards";
 import RecentTransactionsList from "~/components/transactions/recent-transactions-list";
 import { accountBalance } from "~/data/account-balance";
-import { mockedTransactions } from "~/mocks/transactions";
+import { Account } from "~/root";
 
 export default function Overview() {
-  const transactions = mockedTransactions;
+  const [storedData, setStoredData] = useContext(Account);
+  const { transactions } = storedData;
 
   return (
     <main className="overview-main-content">
