@@ -8,6 +8,20 @@ export const getAllTransactions = () => {
   });
 };
 
+export const getRecentTransactions = (filter) => {
+  return prisma.transaction.findMany({
+    where: {
+      createdAt: {
+        ...filter,
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 10,
+  });
+};
+
 // https://www.prisma.io/docs/concepts/components/prisma-client/aggregation-grouping-summarizing#aggregate
 export const getIncomesSum = () => {
   return prisma.transaction.aggregate({

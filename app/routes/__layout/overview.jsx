@@ -1,24 +1,43 @@
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import BalanceCards from "~/components/balance-cards/balance-cards";
 import RecentTransactionsList from "~/components/transactions/recent-transactions-list";
 import {
   getExpensesSum,
   getIncomesSum,
-  getAllTransactions,
   getCurrentMonthIncomes,
   getCurrentMonthExpenses,
+  getRecentTransactions,
 } from "~/models/transactions.server";
+import { recentTransactionsTimeline } from "~/utils/recent-transactions-timeline";
 
 export const loader = async () => {
-  const transactions = await getAllTransactions(),
-    currentMonthIncomes = await getCurrentMonthIncomes(),
+  const currentMonthIncomes = await getCurrentMonthIncomes(),
     currentMonthExpenses = await getCurrentMonthExpenses(),
     incomeAmount = await getIncomesSum(),
     expenseAmount = await getExpensesSum(),
     balance = incomeAmount._sum.amount - expenseAmount._sum.amount;
 
+  const getRecentTransactionsTimeline = recentTransactionsTimeline(),
+    recentTransactionsSection = { results: [], title: "" };
+
+  for (let transactionTimeline of getRecentTransactionsTimeline) {
+    const recentTransactions = await getRecentTransactions(
+      transactionTimeline.filter
+    );
+
+    if (recentTransactions.length > 0) {
+      recentTransactionsSection.title = transactionTimeline.title;
+      recentTransactionsSection.results = recentTransactions;
+      break;
+    }
+  }
+
+  if (recentTransactionsSection.results.length === 0) {
+    recentTransactionsSection.title = "no recent activity...";
+  }
+
   const data = {
-    transactions,
+    recentTransactionsSection,
     balance,
     currentMonthIncomes: currentMonthIncomes._sum.amount,
     currentMonthExpenses: currentMonthExpenses._sum.amount,
@@ -30,8 +49,15 @@ export const loader = async () => {
 };
 
 export default function Overview() {
-  const { transactions, currentMonthIncomes, currentMonthExpenses, balance } =
-    useLoaderData();
+  const {
+    recentTransactionsSection,
+    currentMonthIncomes,
+    currentMonthExpenses,
+    balance,
+  } = useLoaderData();
+
+  const { results: recentTransactionsResults, title } =
+    recentTransactionsSection;
 
   const accountBalance = {
     balance: { title: "balance", amount: balance },
@@ -43,7 +69,20 @@ export default function Overview() {
     <main className="overview-main-content">
       <BalanceCards accountBalance={accountBalance} />
 
-      <RecentTransactionsList recentTransactions={transactions} />
+      <h2 className="recent-activity-title capitalize">{title}</h2>
+      {recentTransactionsResults.length > 0 ? (
+        <RecentTransactionsList
+          recentTransactions={recentTransactionsResults}
+        />
+      ) : (
+        <Link
+          to="/transaction-history"
+          prefetch="intent"
+          className="check-transaction-history-cta capitalize"
+        >
+          check transaction history instead?
+        </Link>
+      )}
     </main>
   );
 }

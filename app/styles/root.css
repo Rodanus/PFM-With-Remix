@@ -127,6 +127,17 @@ body {
   border-radius: 12px;
   text-decoration: none;
 }
+.overview-main-content .recent-activity-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.overview-main-content .check-transaction-history-cta {
+  color: #334155;
+}
+.overview-main-content .check-transaction-history-cta:hover {
+  color: #000;
+}
 
 .sidebar-nav {
   display: inline-block;

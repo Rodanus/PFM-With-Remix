@@ -65,4 +65,18 @@
             @include card(linear-gradient(90deg, #FDA4AF 0%, #FECDD3 102.82%), expense-title, #EF2A4C, expense-link, rgba(251, 113, 133, 0.75));           
         }
     }
+
+    .recent-activity-title {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 18px;
+    }
+
+    .check-transaction-history-cta {
+        color: #334155;
+
+        &:hover {
+            color: #000;
+        }
+    }
 }
