@@ -1,7 +1,11 @@
 import prisma from "~/utils/db.server";
 
 export const getAllTransactions = () => {
-  return prisma.transaction.findMany();
+  return prisma.transaction.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 };
 
 // https://www.prisma.io/docs/concepts/components/prisma-client/aggregation-grouping-summarizing#aggregate
