@@ -15,7 +15,7 @@ BalanceCardsList.propTypes = {
   accountBalance: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
+      amount: PropTypes.number,
     }).isRequired
   ).isRequired,
 };

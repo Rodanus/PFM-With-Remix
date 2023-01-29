@@ -17,7 +17,7 @@ export default function BalanceCard({ balance }) {
           details
         </Link>
       </div>
-      <span className="balance-card-amount">${balance.amount}</span>
+      <span className="balance-card-amount">${balance.amount || 0}</span>
     </li>
   );
 }
@@ -25,6 +25,6 @@ export default function BalanceCard({ balance }) {
 BalanceCard.propTypes = {
   balance: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
+    amount: PropTypes.number,
   }).isRequired,
 };
