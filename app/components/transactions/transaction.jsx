@@ -7,19 +7,21 @@ import TransactionIcon from "./transaction-icon";
 
 export default function Transaction({ transaction }) {
   return (
-    <Link to="#" className="transaction-container flex-space-between">
-      <span className="transaction-category-note-container flex-space-between items-center">
-        <TransactionIcon transactionCategory={transaction.category} />
-        <span className="transaction-note">{transaction.note}</span>
-      </span>
-      <span className="flex-space-between items-center">
-        <TransactionDate transactionDate={transaction.createdAt} />
-        <TransactionAmount
-          transactionAmount={transaction.amount}
-          transactionType={transaction.type}
-        />
-      </span>
-    </Link>
+    <li className="transaction">
+      <Link to="#" className="transaction-container flex-space-between">
+        <span className="transaction-category-note-container flex-space-between items-center">
+          <TransactionIcon transactionCategory={transaction.category} />
+          <span className="transaction-note">{transaction.note}</span>
+        </span>
+        <span className="flex-space-between items-center">
+          <TransactionDate transactionDate={transaction.createdAt} />
+          <TransactionAmount
+            transactionAmount={transaction.amount}
+            transactionType={transaction.type}
+          />
+        </span>
+      </Link>
+    </li>
   );
 }
 

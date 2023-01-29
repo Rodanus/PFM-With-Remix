@@ -3,7 +3,7 @@ import Transaction from "./transaction";
 
 export default function RecentTransactionsList({ recentTransactions }) {
   return (
-    <ul>
+    <ul className="recent-transactions-list">
       {recentTransactions.map((transaction, index) => (
         <Transaction
           key={`${transaction.id} ${index}`}

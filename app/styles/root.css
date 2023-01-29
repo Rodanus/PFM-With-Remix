@@ -167,6 +167,10 @@ body {
   color: #374151;
 }
 
+.recent-transactions-list {
+  list-style-type: none;
+}
+
 .transaction-container {
   text-decoration: none;
   background: #F8FAFC;
