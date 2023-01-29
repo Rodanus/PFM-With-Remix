@@ -1,14 +1,22 @@
 import PropTypes from "prop-types";
+import { formatMoneyAmount } from "~/utils/format-money-amount";
 
-export default function TransactionAmount({ transactionAmount }) {
-  // TODO: Format amount and display
+export default function TransactionAmount({
+  transactionAmount,
+  transactionType,
+}) {
+  const formattedAmount = formatMoneyAmount(transactionAmount),
+    isTransactionTypeIncome = transactionType === "INCOME" ? "+" : "-",
+    formattedAmountWithSymbols = `${isTransactionTypeIncome}$${formattedAmount}`;
+
   return (
     <span className="transaction-amount transaction-amount-income">
-      +${10}K
+      {formattedAmountWithSymbols}
     </span>
   );
 }
 
 TransactionAmount.propTypes = {
   transactionAmount: PropTypes.number.isRequired,
+  transactionType: PropTypes.string.isRequired,
 };

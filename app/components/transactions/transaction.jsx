@@ -14,7 +14,10 @@ export default function Transaction({ transaction }) {
       </span>
       <span className="flex-space-between items-center">
         <TransactionDate transactionDate={transaction.createdAt} />
-        <TransactionAmount transactionAmount={transaction.amount} />
+        <TransactionAmount
+          transactionAmount={transaction.amount}
+          transactionType={transaction.type}
+        />
       </span>
     </Link>
   );
