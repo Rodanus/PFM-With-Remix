@@ -1,6 +1,9 @@
 {
   "private": true,
   "sideEffects": false,
+  "prisma": {
+    "seed": "node prisma/seed"
+  },
   "scripts": {
     "dev": "concurrently \"yarn sass:dev\" \"yarn remix dev\"",
     "sass:dev": "sass -q --no-source-map --watch styles/:app/styles",

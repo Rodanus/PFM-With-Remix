@@ -24,6 +24,14 @@ function getTransactions() {
       amount: 100,
       currency: "USD",
     },
+    {
+      note: "HyperCloud II Headset",
+      category: "TECH",
+      type: "EXPENSE",
+      amount: 75,
+      currency: "USD",
+      createdAt: new Date("2022-12-31").toISOString(),
+    },
   ];
 }
 
