@@ -6,11 +6,14 @@ export default function TransactionAmount({
   transactionType,
 }) {
   const formattedAmount = formatMoneyAmount(transactionAmount),
-    isTransactionTypeIncome = transactionType === "INCOME" ? "+" : "-",
+    transactionTypeLowercase = transactionType.toLowerCase(),
+    isTransactionTypeIncome = transactionTypeLowercase === "income" ? "+" : "-",
     formattedAmountWithSymbols = `${isTransactionTypeIncome}$${formattedAmount}`;
 
   return (
-    <span className="transaction-amount transaction-amount-income">
+    <span
+      className={`transaction-amount transaction-amount-${transactionTypeLowercase}`}
+    >
       {formattedAmountWithSymbols}
     </span>
   );
