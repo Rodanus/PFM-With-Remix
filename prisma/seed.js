@@ -9,6 +9,7 @@ function getTransactions() {
       type: "EXPENSE",
       amount: 75,
       currency: "USD",
+      createdAt: new Date("2023-01-28T13:19:54.000Z").toISOString(),
     },
     {
       note: "Salary after promotion",

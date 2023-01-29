@@ -10,7 +10,7 @@ export default function Transaction({ transaction }) {
     <Link to="#" className="transaction-container flex-space-between">
       <span className="transaction-category-note-container flex-space-between items-center">
         <TransactionIcon transactionCategory={transaction.category} />
-        {transaction.note}
+        <span className="transaction-note">{transaction.note}</span>
       </span>
       <span className="flex-space-between items-center">
         <TransactionDate transactionDate={transaction.createdAt} />

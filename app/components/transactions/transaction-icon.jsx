@@ -19,7 +19,7 @@ export default function TransactionIcon({ transactionCategory }) {
 
   const iconToRender = chooseIcon();
 
-  return <div className="transaction-icon-container">{iconToRender}</div>;
+  return <span className="transaction-icon-container">{iconToRender}</span>;
 }
 
 TransactionIcon.propTypes = {

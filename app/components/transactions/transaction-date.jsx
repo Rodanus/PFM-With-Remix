@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
+import { formatTransactionDate } from "~/utils/format-transaction-date";
 
 export default function TransactionDate({ transactionDate }) {
-  // TODO: Format date and display
-  const date = new Date(transactionDate).getFullYear();
-  return <span className="transaction-date">Today</span>;
+  const formattedTransactionDate = formatTransactionDate(transactionDate);
+  return (
+    <span className="transaction-date capitalize">
+      {formattedTransactionDate}
+    </span>
+  );
 }
 
 TransactionDate.propTypes = {
