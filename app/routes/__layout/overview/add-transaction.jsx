@@ -1,8 +1,17 @@
 import { Form, Link } from "@remix-run/react";
+import { useRef, useState } from "react";
 import CloseIcon from "~/components/icons/close-icon";
 
 export default function AddTransaction() {
+  const [isTypeIncome, setIsTypeIncome] = useState("income");
+  const selectType = useRef(null);
+
   const selectOptionStyles = "add-transaction-select-option capitalize";
+
+  const handleOnTypeChange = () => {
+    selectType.current.value = "";
+    setIsTypeIncome(!isTypeIncome);
+  };
 
   return (
     <>
@@ -21,8 +30,8 @@ export default function AddTransaction() {
               >
                 category
               </label>
-              {/* TODO: Make sure that only the current types' options are shown */}
               <select
+                ref={selectType}
                 name="transaction-category"
                 id="transaction-category"
                 className="category-select capitalize"
@@ -31,33 +40,40 @@ export default function AddTransaction() {
                 <option value="" className={selectOptionStyles}>
                   select
                 </option>
-                <option value="salary" className={selectOptionStyles}>
-                  salary
-                </option>
-                <option value="loan" className={selectOptionStyles}>
-                  loan
-                </option>
-                <option value="gift" className={selectOptionStyles}>
-                  gift
-                </option>
-                <option value="tech" className={selectOptionStyles}>
-                  tech
-                </option>
-                <option value="food" className={selectOptionStyles}>
-                  food
-                </option>
-                <option value="bills" className={selectOptionStyles}>
-                  bills
-                </option>
-                <option value="sports" className={selectOptionStyles}>
-                  sports
-                </option>
-                <option value="health" className={selectOptionStyles}>
-                  health
-                </option>
-                <option value="clothes" className={selectOptionStyles}>
-                  clothes
-                </option>
+                {isTypeIncome ? (
+                  <>
+                    <option value="salary" className={selectOptionStyles}>
+                      salary
+                    </option>
+                    <option value="loan" className={selectOptionStyles}>
+                      loan
+                    </option>
+                    <option value="gift" className={selectOptionStyles}>
+                      gift
+                    </option>
+                  </>
+                ) : (
+                  <>
+                    <option value="tech" className={selectOptionStyles}>
+                      tech
+                    </option>
+                    <option value="food" className={selectOptionStyles}>
+                      food
+                    </option>
+                    <option value="bills" className={selectOptionStyles}>
+                      bills
+                    </option>
+                    <option value="sports" className={selectOptionStyles}>
+                      sports
+                    </option>
+                    <option value="health" className={selectOptionStyles}>
+                      health
+                    </option>
+                    <option value="clothes" className={selectOptionStyles}>
+                      clothes
+                    </option>
+                  </>
+                )}
               </select>
             </div>
             <div>
@@ -110,6 +126,7 @@ export default function AddTransaction() {
                 defaultChecked
                 className="cursor-pointer"
                 required
+                onChange={() => handleOnTypeChange()}
               />
               <label
                 htmlFor="add-transaction-type-income"
@@ -125,6 +142,7 @@ export default function AddTransaction() {
                 value="expense"
                 className="cursor-pointer"
                 required
+                onChange={() => handleOnTypeChange()}
               />
               <label
                 htmlFor="add-transaction-type-expense"

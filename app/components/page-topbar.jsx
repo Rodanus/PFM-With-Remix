@@ -2,7 +2,6 @@ import { useLocation } from "@remix-run/react";
 import { pageTitle } from "~/utils/page-title";
 
 export default function PageTopBar() {
-  // TODO: Get page title from nav-links.js instead.
   const { pathname } = useLocation();
   const pageName = pageTitle(pathname);
 
