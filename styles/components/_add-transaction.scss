@@ -1,0 +1,152 @@
+@mixin button($text-color, $bg-color, $border-color) {
+    padding: 8px 16px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 50px;
+    color: $text-color;
+    background: $bg-color;
+    border: 1px solid $border-color;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+%input-shared {
+    border-radius: 7px;
+    border: none;
+    padding: 0 8px;
+    box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+}
+
+
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .35);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.add-transaction-btn {
+    @include button(#1C658C, rgba(28, 101, 140, 0.15), transparent);
+    display: block;
+    max-width: max-content;
+    margin-left: auto;
+}
+
+.add-transaction-popup {
+    width: 1012px;
+    height: 605px;
+    background: #F8FAFC;
+    position: absolute;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    
+
+    .add-transaction-top {
+        background: #FFFFFF;
+        padding: 15px 25px;
+        border-radius: 15px 15px 0px 0px;
+    }
+
+    .add-transaction-form {
+        padding: 0 38px;
+        
+        
+        .input-label {
+            margin-bottom: 15px;
+        }
+    
+        .category-date-amount-container {
+            margin-top: 70px;
+        }
+    
+        .type-note-container {
+            margin-top: 50px;
+        }
+    
+        .dismiss-add-transaction-container {
+            margin-top: 90px;
+        }
+
+        .category-select {
+            width: 300px;
+            height: 48px;
+            @extend %input-shared;
+        }
+
+        .add-transaction-date {
+            width: 240px;
+            height: 48px;
+            @extend %input-shared;
+        }
+
+        .add-transaction-amount-container {
+            position: relative;
+
+            .add-transaction-amount {
+                width: 223px;
+                height: 49px;
+                @extend %input-shared;
+                border: 1px solid #94A3B8;
+                padding-left: 23px;
+    
+            }
+            .add-transaction-amount-sign {
+                position: absolute;
+                top: 45px;
+                left: 8px;
+                color: #94A3B8;
+                width: 15px;
+                height: 27px;                
+                font-size: 22px;
+            }
+        }
+        
+        .type-note-container {
+
+            .add-transaction-type-title {
+                margin-bottom: 26px;
+            }
+
+            input[type=radio] {
+                margin-right: 9px;
+            }
+
+            .type-input-label {
+                margin-right: 30px;
+            }
+
+            .add-transaction-note-textarea {
+                @extend %input-shared;
+                width: 584px;
+                height: 142px;
+                border: 1px solid #94A3B8;
+                padding: 10px;
+                resize: none;
+            }
+        }
+
+        .dismiss-add-transaction-container {
+            max-width: max-content;
+            margin-left: auto;
+
+            .add-transaction-dismiss-btn {
+                text-decoration: none;
+                margin-right: 34px;
+                @include button(#000, transparent, #000);
+
+            }
+            .add-transaction-submit-btn {
+                @include button(#1C658C, rgba(28, 101, 140, 0.15), transparent);
+            }
+        }
+    }
+
+}

@@ -10,6 +10,10 @@ body {
   background-color: #EEEEEE;
 }
 
+.block {
+  display: block;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -29,4 +33,8 @@ body {
 
 .items-center {
   align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

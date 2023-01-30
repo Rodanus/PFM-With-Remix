@@ -1,5 +1,6 @@
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import BalanceCards from "~/components/balance-cards/balance-cards";
+import AddTransactionButton from "~/components/buttons/add-transaction-button";
 import RecentTransactionsList from "~/components/transactions/recent-transactions-list";
 import {
   getExpensesSum,
@@ -83,6 +84,10 @@ export default function Overview() {
           check transaction history instead?
         </Link>
       )}
+
+      <AddTransactionButton />
+
+      <Outlet />
     </main>
   );
 }

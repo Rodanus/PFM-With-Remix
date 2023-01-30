@@ -11,6 +11,10 @@ body {
   background-color: #EEEEEE;
 }
 
+.block {
+  display: block;
+}
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -30,6 +34,10 @@ body {
 
 .items-center {
   align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .index-page {
@@ -180,12 +188,10 @@ body {
 
 .recent-transactions-list {
   list-style-type: none;
-}
-
-.recent-transactions-list {
   max-height: 300px;
   overflow-y: scroll;
   padding-right: 20px;
+  margin-bottom: 90px;
 }
 .recent-transactions-list .transaction-container {
   text-decoration: none;
@@ -218,4 +224,139 @@ body {
 .recent-transactions-list .transaction-container .transaction-amount-expense {
   background: rgba(239, 42, 76, 0.15);
   color: #EF2A4C;
+}
+
+.add-transaction-popup .add-transaction-form .type-note-container .add-transaction-note-textarea, .add-transaction-popup .add-transaction-form .add-transaction-amount-container .add-transaction-amount, .add-transaction-popup .add-transaction-form .add-transaction-date, .add-transaction-popup .add-transaction-form .category-select {
+  border-radius: 7px;
+  border: none;
+  padding: 0 8px;
+  box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+  font-size: 16px;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.add-transaction-btn {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 50px;
+  color: #1C658C;
+  background: rgba(28, 101, 140, 0.15);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  max-width: max-content;
+  margin-left: auto;
+}
+
+.add-transaction-popup {
+  width: 1012px;
+  height: 605px;
+  background: #F8FAFC;
+  position: absolute;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+.add-transaction-popup .add-transaction-top {
+  background: #FFFFFF;
+  padding: 15px 25px;
+  border-radius: 15px 15px 0px 0px;
+}
+.add-transaction-popup .add-transaction-form {
+  padding: 0 38px;
+}
+.add-transaction-popup .add-transaction-form .input-label {
+  margin-bottom: 15px;
+}
+.add-transaction-popup .add-transaction-form .category-date-amount-container {
+  margin-top: 70px;
+}
+.add-transaction-popup .add-transaction-form .type-note-container {
+  margin-top: 50px;
+}
+.add-transaction-popup .add-transaction-form .dismiss-add-transaction-container {
+  margin-top: 90px;
+}
+.add-transaction-popup .add-transaction-form .category-select {
+  width: 300px;
+  height: 48px;
+}
+.add-transaction-popup .add-transaction-form .add-transaction-date {
+  width: 240px;
+  height: 48px;
+}
+.add-transaction-popup .add-transaction-form .add-transaction-amount-container {
+  position: relative;
+}
+.add-transaction-popup .add-transaction-form .add-transaction-amount-container .add-transaction-amount {
+  width: 223px;
+  height: 49px;
+  border: 1px solid #94A3B8;
+  padding-left: 23px;
+}
+.add-transaction-popup .add-transaction-form .add-transaction-amount-container .add-transaction-amount-sign {
+  position: absolute;
+  top: 45px;
+  left: 8px;
+  color: #94A3B8;
+  width: 15px;
+  height: 27px;
+  font-size: 22px;
+}
+.add-transaction-popup .add-transaction-form .type-note-container .add-transaction-type-title {
+  margin-bottom: 26px;
+}
+.add-transaction-popup .add-transaction-form .type-note-container input[type=radio] {
+  margin-right: 9px;
+}
+.add-transaction-popup .add-transaction-form .type-note-container .type-input-label {
+  margin-right: 30px;
+}
+.add-transaction-popup .add-transaction-form .type-note-container .add-transaction-note-textarea {
+  width: 584px;
+  height: 142px;
+  border: 1px solid #94A3B8;
+  padding: 10px;
+  resize: none;
+}
+.add-transaction-popup .add-transaction-form .dismiss-add-transaction-container {
+  max-width: max-content;
+  margin-left: auto;
+}
+.add-transaction-popup .add-transaction-form .dismiss-add-transaction-container .add-transaction-dismiss-btn {
+  text-decoration: none;
+  margin-right: 34px;
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 50px;
+  color: #000;
+  background: transparent;
+  border: 1px solid #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.add-transaction-popup .add-transaction-form .dismiss-add-transaction-container .add-transaction-submit-btn {
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 50px;
+  color: #1C658C;
+  background: rgba(28, 101, 140, 0.15);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
 }
