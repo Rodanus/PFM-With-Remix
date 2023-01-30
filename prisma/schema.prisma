@@ -16,6 +16,6 @@ model Transaction {
   category  String
   type      String
   amount    Int
-  currency  String
+  currency  String   @default("USD")
   createdAt DateTime @default(now())
 }

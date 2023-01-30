@@ -1,5 +1,9 @@
 import prisma from "~/utils/db.server";
 
+export const createTransaction = (transaction) => {
+  return prisma.transaction.create({ data: transaction });
+};
+
 export const getAllTransactions = () => {
   return prisma.transaction.findMany({
     orderBy: {

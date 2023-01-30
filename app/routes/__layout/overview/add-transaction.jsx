@@ -1,13 +1,33 @@
+import { redirect } from "@remix-run/node";
 import { Form, Link } from "@remix-run/react";
 import { useRef, useState } from "react";
 import CloseIcon from "~/components/icons/close-icon";
+import { createTransaction } from "~/models/transactions.server";
+
+// TODO VALIDATION, if type of transaction is expense, make sure that the account won't have a negative value after that.
+
+export const action = async ({ request }) => {
+  const formData = await request.formData(),
+    category = formData.get("category").toUpperCase(),
+    date = formData.get("date"),
+    amount = Number(formData.get("amount")),
+    type = formData.get("type").toUpperCase(),
+    note = formData.get("note"),
+    createdAt = new Date(date).toISOString();
+
+  await createTransaction({ category, createdAt, amount, type, note });
+
+  return redirect("/overview");
+};
 
 export default function AddTransaction() {
   const [isTypeIncome, setIsTypeIncome] = useState("income");
   const selectType = useRef(null);
 
   const selectOptionStyles = "add-transaction-select-option capitalize";
-  const initialDateValue = new Date().toISOString().slice(0, 10);
+
+  const todayDate = new Date().toLocaleDateString("en-GB");
+  const initialDateValue = todayDate.split("/").reverse().join("-");
 
   const handleOnTypeChange = () => {
     selectType.current.value = "";
@@ -22,7 +42,7 @@ export default function AddTransaction() {
           <span className="capitalize">add transaction</span>
           <CloseIcon />
         </div>
-        <Form method="POST" className="add-transaction-form">
+        <Form method="post" className="add-transaction-form">
           <div className="category-date-amount-container flex-space-between">
             <div>
               <label
@@ -33,7 +53,7 @@ export default function AddTransaction() {
               </label>
               <select
                 ref={selectType}
-                name="transaction-category"
+                name="category"
                 id="transaction-category"
                 className="category-select capitalize"
                 required
@@ -86,7 +106,7 @@ export default function AddTransaction() {
               </label>
               <input
                 type="date"
-                name="transaction-date"
+                name="date"
                 id="transaction-date"
                 className="add-transaction-date"
                 defaultValue={initialDateValue}
@@ -106,7 +126,7 @@ export default function AddTransaction() {
               </label>
               <input
                 type="number"
-                name="transaction-amount"
+                name="amount"
                 id="transaction-amount"
                 min="0"
                 className="add-transaction-amount"
@@ -162,7 +182,7 @@ export default function AddTransaction() {
               </label>
               <textarea
                 className="add-transaction-note-textarea"
-                name="transaction-note"
+                name="note"
                 id="transaction-note"
                 maxLength="350"
                 required
