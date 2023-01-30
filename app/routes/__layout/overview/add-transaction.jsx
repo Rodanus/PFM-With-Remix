@@ -108,7 +108,7 @@ export default function AddTransaction() {
                 type="number"
                 name="transaction-amount"
                 id="transaction-amount"
-                min="1"
+                min="0"
                 className="add-transaction-amount"
                 required
               />
