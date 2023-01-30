@@ -7,6 +7,7 @@ export default function AddTransaction() {
   const selectType = useRef(null);
 
   const selectOptionStyles = "add-transaction-select-option capitalize";
+  const initialDateValue = new Date().toISOString().slice(0, 10);
 
   const handleOnTypeChange = () => {
     selectType.current.value = "";
@@ -83,12 +84,12 @@ export default function AddTransaction() {
               >
                 date
               </label>
-              {/* TODO make sure that you show today's date on first render */}
               <input
                 type="date"
                 name="transaction-date"
                 id="transaction-date"
                 className="add-transaction-date"
+                defaultValue={initialDateValue}
                 required
               />
             </div>
