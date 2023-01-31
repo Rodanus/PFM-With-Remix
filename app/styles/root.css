@@ -360,3 +360,8 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.add-transaction-popup .error-message {
+  font-size: 13px;
+  color: #af0000;
+  position: absolute;
+}

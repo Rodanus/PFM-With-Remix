@@ -1,10 +1,15 @@
-import { redirect } from "@remix-run/node";
-import { Form, Link } from "@remix-run/react";
+import { json, redirect } from "@remix-run/node";
+import { Form, Link, useActionData } from "@remix-run/react";
 import { useRef, useState } from "react";
 import CloseIcon from "~/components/icons/close-icon";
 import { createTransaction } from "~/models/transactions.server";
-
-// TODO VALIDATION, if type of transaction is expense, make sure that the account won't have a negative value after that.
+import {
+  amountValidation,
+  categoryValidation,
+  noteValidation,
+  typeValidation,
+} from "~/utils/inputs-validation";
+import { validateInput } from "~/utils/validate-input";
 
 export const action = async ({ request }) => {
   const formData = await request.formData(),
@@ -12,8 +17,20 @@ export const action = async ({ request }) => {
     date = formData.get("date"),
     amount = Number(formData.get("amount")),
     type = formData.get("type").toUpperCase(),
-    note = formData.get("note"),
+    note = formData.get("note").trim(),
     createdAt = new Date(date).toISOString();
+
+  const errors = {
+    category: validateInput(category, categoryValidation),
+    amount: validateInput(amount, amountValidation),
+    type: validateInput(type, typeValidation),
+    note: validateInput(note, noteValidation),
+  };
+
+  const hasErrors = Object.values(errors).some((errorMessage) => errorMessage);
+  if (hasErrors) {
+    return json(errors);
+  }
 
   await createTransaction({ category, createdAt, amount, type, note });
 
@@ -21,6 +38,8 @@ export const action = async ({ request }) => {
 };
 
 export default function AddTransaction() {
+  const errors = useActionData();
+
   const [isTypeIncome, setIsTypeIncome] = useState("income");
   const selectType = useRef(null);
 
@@ -55,7 +74,7 @@ export default function AddTransaction() {
                 ref={selectType}
                 name="category"
                 id="transaction-category"
-                className="category-select capitalize"
+                className="category-select capitalize block"
                 required
               >
                 <option value="" className={selectOptionStyles}>
@@ -96,6 +115,9 @@ export default function AddTransaction() {
                   </>
                 )}
               </select>
+              {errors?.category ? (
+                <em className="error-message capitalize">{errors.category}</em>
+              ) : null}
             </div>
             <div>
               <label
@@ -129,9 +151,12 @@ export default function AddTransaction() {
                 name="amount"
                 id="transaction-amount"
                 min="0"
-                className="add-transaction-amount"
+                className="add-transaction-amount block"
                 required
               />
+              {errors?.amount ? (
+                <em className="error-message capitalize">{errors.amount}</em>
+              ) : null}
             </div>
           </div>
           <div className="type-note-container flex-space-between">
@@ -171,6 +196,9 @@ export default function AddTransaction() {
               >
                 expense
               </label>
+              {errors?.type ? (
+                <em className="error-message capitalize">{errors.type}</em>
+              ) : null}
             </div>
 
             <div>
@@ -181,12 +209,15 @@ export default function AddTransaction() {
                 note
               </label>
               <textarea
-                className="add-transaction-note-textarea"
+                className="add-transaction-note-textarea block"
                 name="note"
                 id="transaction-note"
                 maxLength="350"
                 required
               ></textarea>
+              {errors?.note ? (
+                <em className="error-message capitalize">{errors.note}</em>
+              ) : null}
             </div>
           </div>
           <div className="dismiss-add-transaction-container">
