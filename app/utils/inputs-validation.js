@@ -1,3 +1,5 @@
+import { transactionCategories } from "./categories";
+
 export const noteValidation = [
   (value) => (value && value.length > 0) || "note is required.",
   (value) =>
@@ -7,19 +9,8 @@ export const noteValidation = [
 export const categoryValidation = [
   (value) => (value && value.length > 0) || "category is required.",
   (value) =>
-    (
-      value && [
-        "SALARY",
-        "LOAN",
-        "GIFT",
-        "TECH",
-        "FOOD",
-        "BILLS",
-        "SPORTS",
-        "HEALTH",
-        "CLOTHS",
-      ]
-    ).includes(value) || "category is not valid.",
+    (value && transactionCategories.includes(value)) ||
+    "category is not valid.",
 ];
 
 export const amountValidation = [

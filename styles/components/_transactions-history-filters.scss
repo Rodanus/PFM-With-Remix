@@ -1,0 +1,82 @@
+.search-input-container { 
+    display: flex;
+    width: 100%;
+    margin-bottom: 24px;
+
+    .search-magnifying-input-container {
+        display: flex;
+        position: relative;
+        // width: 90%;
+        flex: 1;
+
+        .magnifying {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        
+        .search-input {
+            padding: 15px 15px 15px 35px;
+            width: 100%;
+            border-radius: 7px 0 0 7px;
+            border: none;
+            
+        }
+    }
+
+    .clear-text-filter-btn {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+        background: rgba(28, 101, 140, 0.75);
+        padding: 12px 22px;
+        border: none;
+        border-radius: 0px 7px 7px 0px;
+        cursor: pointer;
+    }
+
+}
+
+.category-date-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .category-filter-selector-con {
+        background: #fff;
+        width: 300px;
+        height: 48px;
+        box-shadow: inset 0px 0px 1px 0.1px rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .categories-filter-options {
+            position: absolute;
+            top: 110%;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            width: 300px;
+            height: 232px;
+            border-radius: 7px;
+        }
+    }
+    
+    .category-date-filter {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        background: #F8FAFC;
+        padding: 10px 0 10px 22px;
+        border-radius: 7px 0 0 7px;
+
+        .filter-icon {
+            margin-right: 26px;
+        }
+    }
+    
+}
